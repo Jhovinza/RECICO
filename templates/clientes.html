@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container-fluid">
+    <table class="table table-dark table-striped">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">RUT</th>
+          <th scope="col">Dirección</th>
+          <th scope="col">Teléfono</th>
+          <th scope="col">Correo </th>
+          <th scope="col">Plan de Reciclaje</th>
+          <th scope="col">Fecha Entrega/Retiro</th>
+          <th scope="col">Modificar / Eliminar</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for registro in listaClientes %}
+        <tr>
+          <th>{{ registro.id_cliente }}</th>
+          <td>{{ registro.nombre }}</td>
+          <td>{{ registro.rut }}</td>
+          <td>{{ registro.direccion }}</td>
+          <td>{{ registro.telefono }}</td>
+          <td>{{ registro.correo }}</td>
+          <td>{{ registro.plan_reciclaje }}</td>
+          <td>{{ registro.fecha_entrega }}</td>
+          <td><a class="btn btn-light btn-sm" href="{% url 'modificarClientes' registro.id_cliente %}">Modificar</a>
+              <a class="btn btn-light btn-sm" href="{% url 'eliminarClientes' registro.id_cliente %}">Eliminar</a> </td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+        <a class="btn btn-light" href="{% url 'agregarClientes' %}">Agregar Cliente</a>
+
+</div>
+{% endblock %}

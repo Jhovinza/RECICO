@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container-fluid">
+    <table class="table table-dark table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Fecha</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Ciudad</th>
+          <th scope="col">Dirección</th>
+          <th scope="col">Teléfono</th>
+          <th scope="col">Correo </th>
+          <th scope="col">Plan de Reciclaje</th>
+        </tr>
+      </thead>
+    <div class="container-fluid bg-faded">
+        <form action=""enctype="multipart/form-data" method="get">
+            {% csrf_token %}
+            {{ filter.form.as_p }}
+            <input type="submit" />
+        </form>
+    </div>
+      <tbody>
+      {% for obj in filter.qs %}
+        <tr>
+          <th>{{ obj.fecha_entrega }}</th>
+          <td>{{ obj.nombre }}</td>
+          <td>{{ obj.ciudad }}</td>
+          <td>{{ obj.direccion }}</td>
+          <td>{{ obj.telefono }}</td>
+          <td>{{ obj.plan_reciclaje }}</td>
+
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+
+
+</div>
+{% endblock %}

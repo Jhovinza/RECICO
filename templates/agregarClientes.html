@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="container bg-white">
+        <form action=""enctype="multipart/form-data" method="POST" class="post-form">
+
+            {% csrf_token %}
+            {{ form.media }}
+            {{ form | crispy }}
+
+            <button>Agregar Clientes</button>
+        </form>
+    </div>
+
+{% endblock %}

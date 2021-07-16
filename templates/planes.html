@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container-fluid">
+    <table class="table table-dark table-striped">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Nombre Plan</th>
+          <th scope="col">Valor Plan</th>
+          <th scope="col">Número de Retiros</th>
+          <th scope="col">Modificar / Eliminar</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for registro in listaPlanes %}
+        <tr>
+          <th>{{ registro.id_plan }}</th>
+          <td>{{ registro.nombre_plan }}</td>
+          <td>{{ registro.valor_plan }}</td>
+          <td>{{ registro.num_retiros }}</td>
+          <td><a class="btn btn-light btn-sm" href="{% url 'modificarPlanes' registro.id_plan %}">Modificar</a>
+              <a class="btn btn-light btn-sm" href="{% url 'eliminarPlanes' registro.id_plan %}">Eliminar</a> </td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+        <a class="btn btn-light" href="{% url 'agregarPlanes' %}">Agregar Plan</a>
+
+</div>
+{% endblock %}
